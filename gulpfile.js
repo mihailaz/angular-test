@@ -26,7 +26,7 @@ gulp.task('connect', function(){
 	});
 });
 
-gulp.task('watch', ['css', 'html', 'js'], function(){
+gulp.task('watch', ['build'], function(){
 	gulp.watch(['src/css/**/*.css'], ['app-css']);
 	gulp.watch(['src/js/**/*.js'], ['app-js']);
 	gulp.watch(['src/**/*.html'], ['html']);
