@@ -6,15 +6,18 @@
 
 "use strict";
 
-var gulp       = require('gulp'),
-    concat     = require('gulp-concat'),
-    minifyCSS  = require('gulp-minify-css'),
-    uglify     = require('gulp-uglify'),
-    sourcemaps = require('gulp-sourcemaps'),
-    ngAnnotate = require('gulp-ng-annotate'),
-    connect    = require('gulp-connect');
+var gulp        = require('gulp'),
+    concat      = require('gulp-concat'),
+    minifyCSS   = require('gulp-minify-css'),
+    uglify      = require('gulp-uglify'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    cacheBuster = require('gulp-cache-bust'),
+    ngAnnotate  = require('gulp-ng-annotate'),
+    connect     = require('gulp-connect');
 
 gulp.task('default', ['connect', 'watch']);
+
+gulp.task('build', ['css', 'html', 'js']);
 
 gulp.task('connect', function(){
 	connect.server({
@@ -31,6 +34,7 @@ gulp.task('watch', ['css', 'html', 'js'], function(){
 
 gulp.task('html', function(){
 	gulp.src(['src/**/*.html'])
+		.pipe(cacheBuster())
 		.pipe(gulp.dest('app'))
 		.pipe(connect.reload());
 });
