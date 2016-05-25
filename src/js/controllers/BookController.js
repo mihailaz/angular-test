@@ -4,6 +4,6 @@
  * Time: 16:45
  */
 
-angular.module('booksCatalogApp').controller('CatalogController', function($scope){
+angular.module('booksCatalogApp').controller('BookController', function($scope){
 
 });
