@@ -1,1 +1,7 @@
 <p>catalog</p>
+
+<ul>
+	<li ng-repeat="book in catalog">
+		<a href="#/book/{{book.id}}">{{book.title.default}}</a>
+	</li>
+</ul>
