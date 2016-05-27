@@ -32,7 +32,8 @@ gulp.task('connect', function(){
 gulp.task('watch', ['build'], function(){
 	gulp.watch(['src/css/**/*.css'], ['app-css']);
 	gulp.watch(['src/js/**/*.js'], ['app-js']);
-	gulp.watch(['src/**/*.html'], ['html']);
+	gulp.watch(['src/**/*.tpl.html'], ['app-tmpls']);
+	gulp.watch(['src/**/*.html', '!src/**/*.tpl.html'], ['html']);
 });
 
 gulp.task('html', function(){
@@ -92,11 +93,10 @@ gulp.task('app-js', function(){
 });
 
 gulp.task('app-tmpls', function () {
-	return gulp.src('src/views/**/*.tpl.html')
+	return gulp.src('src/**/*.tpl.html')
 		.pipe(tmplCache({
 			filename  : 'templates.js',
-			module    : 'app.templates',
-			root      : 'views'
+			module    : 'app.templates'
 		}))
 		.pipe(uglify())
 		.pipe(gulp.dest('app'));
