@@ -7,7 +7,14 @@
 (function(){
 	"use strict";
 
+	var books = {};
+
 	angular.module('app.catalog').controller('BookCtrl', function($scope, $routeParams, Catalog){
-		$scope.book = Catalog.get({id: $routeParams.id});
+		var id = $routeParams.id;
+
+		if (!books.id){
+			books.id = Catalog.get({id: id});
+		}
+		$scope.book = books.id;
 	});
 })();

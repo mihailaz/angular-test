@@ -7,7 +7,12 @@
 (function(){
 	"use strict";
 
+	var catalog;
+
 	angular.module('app.catalog').controller('CatalogCtrl', function($scope, Catalog){
-		$scope.catalog = Catalog.query();
+		if (!catalog){
+			catalog = Catalog.query();
+		}
+		$scope.catalog = catalog;
 	});
 })();
