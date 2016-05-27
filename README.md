@@ -10,4 +10,4 @@
 - bower install
 - gulp run
 
-### Go to http://localhost:8080/
+### Go to [http://localhost:8080/](http://localhost:8080/)
