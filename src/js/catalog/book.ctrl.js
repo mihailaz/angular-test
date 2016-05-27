@@ -12,9 +12,9 @@
 	angular.module('app.catalog').controller('BookCtrl', function($scope, $routeParams, Catalog){
 		var id = $routeParams.id;
 
-		if (!books.id){
-			books.id = Catalog.get({id: id});
+		if (!books[id]){
+			books[id] = Catalog.get({id: id});
 		}
-		$scope.book = books.id;
+		$scope.book = books[id];
 	});
 })();
