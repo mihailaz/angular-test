@@ -18,6 +18,8 @@ var gulp        = require('gulp'),
 
 gulp.task('default', ['connect', 'watch']);
 
+gulp.task('run', ['build', 'connect']);
+
 gulp.task('build', ['css', 'html', 'js']);
 
 gulp.task('connect', function(){
