@@ -17,10 +17,10 @@ var gulp        = require('gulp'),
     connect     = require('gulp-connect');
 
 gulp.task('default', ['connect', 'watch']);
-
 gulp.task('run', ['build', 'connect']);
-
 gulp.task('build', ['css', 'html', 'js']);
+gulp.task('css', ['vendor-css', 'app-css']);
+gulp.task('js', ['vendor-js', 'app-js', 'app-tmpls']);
 
 gulp.task('connect', function(){
 	connect.server({
@@ -42,8 +42,6 @@ gulp.task('html', function(){
 		.pipe(connect.reload());
 });
 
-gulp.task('css', ['vendor-css', 'app-css']);
-
 gulp.task('vendor-css', function(){
 	gulp.src([
 			'bower_components/angular-material/angular-material.min.css'
@@ -63,8 +61,6 @@ gulp.task('app-css', function(){
 		.pipe(gulp.dest('app'))
 		.pipe(connect.reload());
 });
-
-gulp.task('js', ['vendor-js', 'app-js', 'app-tmpls']);
 
 gulp.task('vendor-js', function(){
 	gulp.src([
