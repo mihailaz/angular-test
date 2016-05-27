@@ -49,8 +49,7 @@ gulp.task('vendor-css', function(){
 		])
 		.pipe(concat('vendor.css'))
 		.pipe(minifyCSS())
-		.pipe(gulp.dest('app'))
-		.pipe(connect.reload());
+		.pipe(gulp.dest('app'));
 });
 
 gulp.task('app-css', function(){
@@ -74,8 +73,7 @@ gulp.task('vendor-js', function(){
 			'bower_components/angular-material/angular-material.min.js'
 		])
 		.pipe(concat('vendor.js'))
-		.pipe(gulp.dest('app'))
-		.pipe(connect.reload());
+		.pipe(gulp.dest('app'));
 });
 
 gulp.task('app-js', function(){
