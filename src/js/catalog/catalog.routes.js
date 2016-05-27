@@ -10,11 +10,11 @@
 	angular.module('app.catalog').config(['$routeProvider', function($routeProvider){
 		$routeProvider
 			.when('/', {
-				templateUrl:'views/catalog.html',
+				templateUrl:'views/catalog/catalog.tpl.html',
 				controller:'CatalogCtrl'
 			})
 			.when('/book/:id', {
-				templateUrl:'views/book.html',
+				templateUrl:'views/catalog/book.tpl.html',
 				controller:'BookCtrl'
 			})
 			.otherwise({redirectTo: '/'});

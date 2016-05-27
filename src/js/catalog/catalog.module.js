@@ -7,5 +7,5 @@
 (function(){
 	"use strict";
 
-	angular.module('app.catalog', ['ngRoute', 'ngResource']);
+	angular.module('app.catalog', ['ngRoute', 'ngResource', 'app.templates']);
 })();

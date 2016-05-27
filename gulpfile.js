@@ -13,6 +13,7 @@ var gulp        = require('gulp'),
     sourcemaps  = require('gulp-sourcemaps'),
     cacheBuster = require('gulp-cache-bust'),
     ngAnnotate  = require('gulp-ng-annotate'),
+    tmplCache   = require('gulp-angular-templatecache'),
     connect     = require('gulp-connect');
 
 gulp.task('default', ['connect', 'watch']);
@@ -33,7 +34,7 @@ gulp.task('watch', ['build'], function(){
 });
 
 gulp.task('html', function(){
-	gulp.src(['src/**/*.html'])
+	gulp.src(['src/**/*.html', '!src/**/*.tpl.html'])
 		.pipe(cacheBuster())
 		.pipe(gulp.dest('app'))
 		.pipe(connect.reload());
@@ -61,7 +62,7 @@ gulp.task('app-css', function(){
 		.pipe(connect.reload());
 });
 
-gulp.task('js', ['vendor-js', 'app-js']);
+gulp.task('js', ['vendor-js', 'app-js', 'app-tmpls']);
 
 gulp.task('vendor-js', function(){
 	gulp.src([
@@ -90,4 +91,15 @@ gulp.task('app-js', function(){
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('app'))
 		.pipe(connect.reload());
+});
+
+gulp.task('app-tmpls', function () {
+	return gulp.src('src/views/**/*.tpl.html')
+		.pipe(tmplCache({
+			filename  : 'templates.js',
+			module    : 'app.templates',
+			root      : 'views'
+		}))
+		.pipe(uglify())
+		.pipe(gulp.dest('app'));
 });
