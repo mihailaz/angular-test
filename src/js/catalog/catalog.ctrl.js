@@ -9,10 +9,26 @@
 
 	var catalog;
 
-	angular.module('app.catalog').controller('CatalogCtrl', function($scope, Catalog){
+	angular.module('app.catalog').controller('CatalogCtrl', function($scope, Catalog, $location){
 		if (!catalog){
 			catalog = Catalog.query();
 		}
-		$scope.catalog = catalog;
+		$scope.catalog   = catalog;
+		$scope.randGrid  = function(min, max, book){
+			if (!book.grid){
+				book.grid = {
+					col: rand(min, max),
+					row: rand(min, max)
+				};
+			}
+			return book.grid;
+		};
+		$scope.bookClick = function(book){
+			$location.path('book/' + book.id);
+		};
+
+		function rand(min, max){
+			return (Math.random() * (max - min) + min).toFixed(0);
+		}
 	});
 })();
