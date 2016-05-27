@@ -99,5 +99,6 @@ gulp.task('app-tmpls', function () {
 			module    : 'app.templates'
 		}))
 		.pipe(uglify())
-		.pipe(gulp.dest('app'));
+		.pipe(gulp.dest('app'))
+		.pipe(connect.reload());
 });
