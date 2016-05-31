@@ -10,6 +10,7 @@ var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
     minifyCSS   = require('gulp-minify-css'),
     uglify      = require('gulp-uglify'),
+    htmlmin     = require('gulp-htmlmin'),
     sourcemaps  = require('gulp-sourcemaps'),
     cacheBuster = require('gulp-cache-bust'),
     ngAnnotate  = require('gulp-ng-annotate'),
@@ -38,6 +39,7 @@ gulp.task('watch', ['build'], function(){
 
 gulp.task('html', function(){
 	gulp.src(['src/**/*.html', '!src/**/*.tpl.html'])
+		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(cacheBuster())
 		.pipe(gulp.dest('app'))
 		.pipe(connect.reload());
@@ -93,6 +95,7 @@ gulp.task('app-js', function(){
 
 gulp.task('app-tmpls', function () {
 	return gulp.src('src/**/*.tpl.html')
+		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(tmplCache({
 			filename  : 'templates.js',
 			module    : 'app.templates'
