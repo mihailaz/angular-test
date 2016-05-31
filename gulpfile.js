@@ -97,8 +97,8 @@ gulp.task('app-tmpls', function () {
 	return gulp.src('src/**/*.tpl.html')
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(tmplCache({
-			filename  : 'templates.js',
-			module    : 'app.templates'
+			filename: 'templates.js',
+			module  : 'app.templates'
 		}))
 		.pipe(uglify())
 		.pipe(gulp.dest('app'))
