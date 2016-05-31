@@ -66,16 +66,19 @@ gulp.task('app-css', function(){
 
 gulp.task('vendor-js', function(){
 	gulp.src([
-			'bower_components/angular/angular.min.js',
-			'bower_components/angular-route/angular-route.min.js',
-			'bower_components/angular-resource/angular-resource.min.js',
-			'bower_components/angular-messages/angular-messages.min.js',
-			'bower_components/angular-animate/angular-animate.min.js',
-			'bower_components/angular-aria/angular-aria.min.js',
-			'bower_components/angular-material/angular-material.min.js',
-			'bower_components/angular-ui-router/release/angular-ui-router.min.js'
+			'bower_components/angular/angular.js',
+			'bower_components/angular-route/angular-route.js',
+			'bower_components/angular-resource/angular-resource.js',
+			'bower_components/angular-messages/angular-messages.js',
+			'bower_components/angular-animate/angular-animate.js',
+			'bower_components/angular-aria/angular-aria.js',
+			'bower_components/angular-material/angular-material.js',
+			'bower_components/angular-ui-router/release/angular-ui-router.js'
 		])
+		.pipe(sourcemaps.init())
 		.pipe(concat('vendor.js'))
+		.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('app'));
 });
 
