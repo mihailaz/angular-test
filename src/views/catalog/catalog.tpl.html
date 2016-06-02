@@ -2,8 +2,9 @@
 		md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
 		md-row-height-gt-md="1:1" md-row-height="2:2"
 		md-gutter="12px" md-gutter-gt-sm="8px" >
-	<md-grid-tile class="gray"
-	              ng-repeat="book in catalog" ng-click="bookClick(book)"
+	<md-grid-tile ng-repeat="book in catalog"
+	              class="gray"
+	              ui-sref="book({id: book.id})"
 	              md-rowspan="{{randGrid(1, 2, book).row}}" md-colspan="{{randGrid(1, 2, book).col}}" md-colspan-sm="1" md-colspan-xs="1">
 		<div class="tile-img">
 			<img ng-src="http://storage.aggregion.com/api/files/{{book.cover}}/shared/data"

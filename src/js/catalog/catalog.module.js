@@ -11,6 +11,7 @@
 		'ngRoute',
 		'ngResource',
 		'ngMaterial',
+		'ui.router',
 		'app.templates',
 		'app.core'
 	]);

@@ -7,5 +7,5 @@
 (function(){
 	'use strict';
 
-	angular.module('app.core', []);
+	angular.module('app.core', ['ngRoute','ui.router']);
 })();

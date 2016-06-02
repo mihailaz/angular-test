@@ -7,16 +7,19 @@
 (function(){
 	"use strict";
 
-	angular.module('app.catalog').config(['$routeProvider', function($routeProvider){
-		$routeProvider
-			.when('/', {
-				templateUrl:'views/catalog/catalog.tpl.html',
-				controller:'CatalogCtrl'
+	angular.module('app.catalog').config(function($stateProvider, $urlRouterProvider){
+		$stateProvider
+			.state('catalog', {
+				url        : '/catalog',
+				templateUrl: 'views/catalog/catalog.tpl.html',
+				controller : 'CatalogCtrl'
 			})
-			.when('/book/:id', {
-				templateUrl:'views/catalog/book.tpl.html',
-				controller:'BookCtrl'
-			})
-			.otherwise({redirectTo: '/'});
-	}]);
+			.state('book', {
+				url        : '/catalog/:id',
+				templateUrl: 'views/catalog/book.tpl.html',
+				controller : 'BookCtrl'
+			});
+
+		$urlRouterProvider.when('', '/catalog');
+	});
 })();

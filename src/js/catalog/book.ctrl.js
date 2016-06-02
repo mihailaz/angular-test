@@ -9,12 +9,16 @@
 
 	var books = {};
 
-	angular.module('app.catalog').controller('BookCtrl', function($scope, $routeParams, Catalog){
-		var id = $routeParams.id;
+	angular.module('app.catalog').controller('BookCtrl', function($scope, $stateParams, Catalog){
+		var id = $stateParams.id;
 
 		if (!books[id]){
-			books[id] = Catalog.get({id: id});
+			books[id] = {
+				book   : Catalog.get({id: id}),
+				bundles: Catalog.query({id: id, type: 'bundles'})
+			};
 		}
-		$scope.book = books[id];
+		$scope.book    = books[id].book;
+		$scope.bundles = books[id].bundles;
 	});
 })();

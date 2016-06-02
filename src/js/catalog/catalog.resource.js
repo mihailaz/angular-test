@@ -8,6 +8,6 @@
 	"use strict";
 
 	angular.module('app.catalog').factory('Catalog', ['$resource', function($resource){
-		return $resource('https://ds.aggregion.com/api/public/catalog/:id');
+		return $resource('https://ds.aggregion.com/api/public/catalog/:id/:type');
 	}]);
 })();
