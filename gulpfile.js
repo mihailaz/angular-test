@@ -75,10 +75,8 @@ gulp.task('vendor-js', function(){
 			'bower_components/angular-material/angular-material.js',
 			'bower_components/angular-ui-router/release/angular-ui-router.js'
 		])
-		.pipe(sourcemaps.init())
 		.pipe(concat('vendor.js'))
 		.pipe(uglify())
-		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('app'));
 });
 
